@@ -1,0 +1,24 @@
+#mainForm {
+    position: absolute;
+    left: 20%; top: 20%;
+    background-color: #e2ffe5;
+    border-left: 10px solid #b0eeff; border-top: 10px solid #b0eeff;
+    border-right: 10px solid #b3d4ff; border-bottom: 10px solid #b3d4ff;
+    border-radius: 10px;
+}
+
+#title {
+    position: absolute;
+    left: 35%;
+}
+
+#mainForm a{
+    /*background-color: #ceffe0;*/
+}
+
+#footer {
+    position: absolute;
+    top: 90%;
+    left: 35%;
+}
+
