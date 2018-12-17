@@ -1,6 +1,7 @@
-package my.words.handler;
+package my.words.news.service;
 
-import my.words.RandomTitle;
+import my.words.news.RandomTitle;
+import my.words.news.handler.AbstractNewsHandler;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -24,7 +25,8 @@ public class GoogleNews extends AbstractNewsHandler implements RandomTitle {
     }
 
     public GoogleNews() {
-        getJsonFromWeb(API_URL);
+        getJson(API_URL);
     }
+
 
 }
