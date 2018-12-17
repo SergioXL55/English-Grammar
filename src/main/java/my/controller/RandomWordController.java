@@ -1,11 +1,13 @@
 package my.controller;
 
-import my.words.RandomSentence;
+import my.words.scentence.RandomSentence;
+import my.words.translate.Translator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Map;
@@ -20,16 +22,18 @@ public class RandomWordController {
 
     private final static int SENTENCES_COUNT = 5;
     private RandomSentence randomSentence;
+    private Translator translator;
 
-    public RandomWordController(RandomSentence randomSentence) {
+    public RandomWordController(RandomSentence randomSentence,Translator translator) {
         this.randomSentence = randomSentence;
+        this.translator=translator;
     }
 
     @RequestMapping("/word")
     public ModelAndView loadRandomWord(@RequestParam Map<String, String> param, ModelMap modelMap) {
         randomSentence.clearScentences();
         randomSentence.addSentencesFromWeb(SENTENCES_COUNT);
-        modelMap.addAttribute("sentence", randomSentence.getAllSecntences());
+        modelMap.addAttribute("sentences", randomSentence.getAllSecntences());
         return new ModelAndView("wordView", modelMap);
     }
 
@@ -39,6 +43,14 @@ public class RandomWordController {
         int num = Integer.parseInt(param.getOrDefault("num", "0"));
         modelMap.addAttribute("answer", randomSentence.checkWord(id, num).getCode());
         return new ModelAndView("answer", modelMap);
+    }
+
+    @Deprecated
+    @RequestMapping(value = "/trans", method = RequestMethod.POST, produces={"application/text; charset=UTF-8"})
+    @ResponseBody
+    public String translateWord(@RequestParam Map<String, String> param, ModelMap modelMap){
+        modelMap.addAttribute("trans",translator.getTranslate("hello") );
+        return  translator.getTranslate("hello");
     }
 
 }

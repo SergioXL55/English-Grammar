@@ -1,4 +1,4 @@
-package my.words;
+package my.words.news;
 
 /**
  * User: Sushakov

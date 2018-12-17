@@ -1,7 +1,6 @@
 package my.controller;
 
 import my.encode.TextEncryptor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -21,8 +20,11 @@ import java.util.Map;
 @ComponentScan("my")
 public class MainController {
 
-    @Autowired
     private TextEncryptor textEncryptor;
+
+    public MainController(TextEncryptor textEncryptor) {
+        this.textEncryptor = textEncryptor;
+    }
 
     @RequestMapping(path = "/")
     public ModelAndView createAccount(ModelMap model) {
@@ -41,14 +43,6 @@ public class MainController {
             encryptText = textEncryptor.encodeText(param.get("text"));
         }
         model.addAttribute("decode", encryptText);
-        return new ModelAndView("generator", model);
-    }
-
-    @RequestMapping(path = "/wl")
-    public ModelAndView testWebLogic(ModelMap model) {
-        model.addAttribute("perfix", "wl");
-        model.addAttribute("title", "WebLogic Security");
-        model.addAttribute("decode", "Результат отсутствует");
         return new ModelAndView("generator", model);
     }
 

@@ -1,7 +1,8 @@
-package my.words;
+package my.words.scentence;
 
 import my.words.answer.AnswerCode;
-import my.words.model.Sentence;
+import my.words.scentence.model.Sentence;
+
 import java.util.List;
 
 /**
@@ -10,18 +11,14 @@ import java.util.List;
  * Time: 11:23
  **/
 
-
 public interface RandomSentence {
 
     List<Sentence> getAllSecntences();
 
     void addSentencesFromWeb(int sentenceCount);
 
-    void addSentence(String sentence, boolean useDelimiter);
-
     void clearScentences();
 
     AnswerCode checkWord(int sentencePos, int wordPos);
-
 
 }
