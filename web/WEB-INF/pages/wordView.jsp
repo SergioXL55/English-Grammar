@@ -31,7 +31,6 @@
         <br>
     </c:forEach>
     <a href="${pageContext.servletContext.contextPath}/word"><input type="button" value="Refresh"></a>
-    <button onclick="testMe()">get test</button>
 </div>
 <footer id="footer">
     Copyright Ушаков С.А. / <a href="https://newsapi.org">"Powered by News API"</a> /
