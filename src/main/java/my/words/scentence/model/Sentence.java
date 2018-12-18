@@ -17,7 +17,6 @@ public class Sentence implements Serializable {
     private List<String> sentence = new ArrayList<>();
     private Map<Integer, Integer> realMap = new HashMap<>();
     private List<String> randomSentence = new ArrayList<>();
-    private List<String> translatedSentence = new ArrayList<>();
     private Integer currentPosition = 0;
     private boolean finished = false;
 
@@ -47,14 +46,6 @@ public class Sentence implements Serializable {
 
     public void setRandomSentence(List<String> randomSentence) {
         this.randomSentence = randomSentence;
-    }
-
-    public List<String> getTranslatedSentence() {
-        return translatedSentence;
-    }
-
-    public void setTranslatedSentence(List<String> translatedSentence) {
-        this.translatedSentence = translatedSentence;
     }
 
     public Integer getCurrentPosition() {

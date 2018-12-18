@@ -8,9 +8,9 @@ package my.words.answer;
 
 public enum AnswerCode {
 
-    CODE_OK(1),
-    CODE_NO(-1),
-    CODE_FINISH(0);
+    OK(1),
+    NO(-1),
+    FINISH(0);
 
     private int code;
 

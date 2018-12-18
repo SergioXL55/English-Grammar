@@ -18,6 +18,4 @@ abstract public class SentenceTemplate {
 
     protected abstract void addRandomSentence();
 
-    protected abstract void addTranslate(String originalWord);
-
 }
