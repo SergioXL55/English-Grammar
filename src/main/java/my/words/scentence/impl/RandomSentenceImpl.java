@@ -5,7 +5,6 @@ import my.words.news.RandomTitle;
 import my.words.scentence.RandomSentence;
 import my.words.scentence.model.Sentence;
 import my.words.scentence.template.SentenceTemplate;
-import my.words.translate.Translator;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.ArrayList;
@@ -26,10 +25,8 @@ public class RandomSentenceImpl extends SentenceTemplate implements RandomSenten
     private Sentence currentSentence;
 
     private RandomTitle randomTitle;
-    private Translator translator;
 
-    public RandomSentenceImpl(RandomTitle googleNews, Translator yandexTranslator) {
-        this.translator = yandexTranslator;
+    public RandomSentenceImpl(RandomTitle googleNews) {
         this.randomTitle = googleNews;
     }
 
