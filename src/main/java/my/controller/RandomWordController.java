@@ -24,9 +24,9 @@ public class RandomWordController {
     private RandomSentence randomSentence;
     private Translator translator;
 
-    public RandomWordController(RandomSentence randomSentence,Translator translator) {
+    public RandomWordController(RandomSentence randomSentence, Translator translator) {
         this.randomSentence = randomSentence;
-        this.translator=translator;
+        this.translator = translator;
     }
 
     @RequestMapping("/word")
@@ -38,19 +38,23 @@ public class RandomWordController {
     }
 
     @RequestMapping(value = "/check", method = RequestMethod.POST)
-    public ModelAndView randomWord(@RequestParam Map<String, String> param, ModelMap modelMap) {
+    @ResponseBody
+    public Integer randomWord(@RequestParam Map<String, String> param, ModelMap modelMap) {
         int id = Integer.parseInt(param.getOrDefault("id", "0"));
         int num = Integer.parseInt(param.getOrDefault("num", "0"));
-        modelMap.addAttribute("answer", randomSentence.checkWord(id, num).getCode());
-        return new ModelAndView("answer", modelMap);
+        return randomSentence.checkWord(id, num).getCode();
     }
 
-    @Deprecated
-    @RequestMapping(value = "/trans", method = RequestMethod.POST, produces={"application/text; charset=UTF-8"})
+    @RequestMapping(value = "/trans", method = RequestMethod.POST, produces = {"application/text; charset=UTF-8"})
     @ResponseBody
-    public String translateWord(@RequestParam Map<String, String> param, ModelMap modelMap){
-        modelMap.addAttribute("trans",translator.getTranslate("hello") );
-        return  translator.getTranslate("hello");
+    public String translateWord(@RequestParam Map<String, String> param) {
+        return translator.getTranslate(param.getOrDefault("text", "error"));
     }
 
+
+    @RequestMapping(value = "/test", method = RequestMethod.POST)
+    @ResponseBody
+    public Integer test(@RequestParam Map<String, String> param) {
+        return randomSentence.checkWord(0, 0).getCode();
+    }
 }

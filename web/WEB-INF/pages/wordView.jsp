@@ -21,7 +21,7 @@
 <div id="mainForm">
     <c:forEach begin="0" end="${sentences.size()-1}" var="row">
         <c:forEach begin="0" end="${sentences.get(row).randomSentence.size()-1}" var="i">
-            <a href="#" onclick="clickMe(${row},${i})" title="${sentences.get(row).translatedSentence.get(i)}"
+            <a href="#" onclick="clickMe(${row},${i})" onmouseenter="translateWord('link${row}word${i}')"
                id="link${row}word${i}">${sentences.get(row).randomSentence.get(i)}</a>
         </c:forEach>
         <br>
@@ -31,11 +31,8 @@
         <br>
     </c:forEach>
     <a href="${pageContext.servletContext.contextPath}/word"><input type="button" value="Refresh"></a>
+    <button onclick="testMe()">get test</button>
 </div>
-<div id="results">
-    <input type="hidden" id="answer">
-</div>
-
 <footer id="footer">
     Copyright Ушаков С.А. / <a href="https://newsapi.org">"Powered by News API"</a> /
     <a href=" http://translate.yandex.ru/">"Переведено сервисом «Яндекс.Переводчик"</a>

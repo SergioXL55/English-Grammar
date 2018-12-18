@@ -12,7 +12,7 @@ import org.springframework.context.annotation.PropertySource;
  * Time: 10:05
  **/
 @Configuration
-@PropertySource("resources/yandexTranslator.properties")
+@PropertySource(value = "resources/yandexTranslator.properties",encoding = "windows-1251")
 public class YandexTranslator extends AbstractTranslateHandler implements Translator {
 
     @Value("${ya.trans.JSON_ARRAY}")

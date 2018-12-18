@@ -1,11 +1,10 @@
 package my.words.scentence.impl;
 
-import my.words.scentence.RandomSentence;
-import my.words.news.RandomTitle;
 import my.words.answer.AnswerCode;
+import my.words.news.RandomTitle;
+import my.words.scentence.RandomSentence;
 import my.words.scentence.model.Sentence;
 import my.words.scentence.template.SentenceTemplate;
-import my.words.translate.Translator;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.ArrayList;
@@ -26,10 +25,8 @@ public class RandomSentenceImpl extends SentenceTemplate implements RandomSenten
     private Sentence currentSentence;
 
     private RandomTitle randomTitle;
-    private Translator translator;
 
-    public RandomSentenceImpl(RandomTitle googleNews, Translator yandexTranslator) {
-        this.translator = yandexTranslator;
+    public RandomSentenceImpl(RandomTitle googleNews) {
         this.randomTitle = googleNews;
     }
 
@@ -46,12 +43,12 @@ public class RandomSentenceImpl extends SentenceTemplate implements RandomSenten
                 curSentence.setCurrentPosition(curSentence.getCurrentPosition() + 1);//TODO колхоз едишн
                 if (curSentence.getCurrentPosition() == curSentence.getSentence().size()) {
                     curSentence.setFinished(true);
-                    return AnswerCode.CODE_FINISH;
+                    return AnswerCode.FINISH;
                 }
-                return AnswerCode.CODE_OK;
+                return AnswerCode.OK;
             }
         }
-        return AnswerCode.CODE_NO;
+        return AnswerCode.NO;
     }
 
     @Override
@@ -96,14 +93,7 @@ public class RandomSentenceImpl extends SentenceTemplate implements RandomSenten
 
     @Override
     protected void addRandomSentence() {
-        currentSentence.getRealMap().forEach((k, v) -> {
-            currentSentence.getRandomSentence().add(currentSentence.getSentence().get(v));
-            addTranslate(currentSentence.getSentence().get(v));
-        });
+        currentSentence.getRealMap().forEach((k, v) -> currentSentence.getRandomSentence().add(currentSentence.getSentence().get(v)));
     }
 
-    @Override
-    protected void addTranslate(String originalWord) {
-        currentSentence.getTranslatedSentence().add(translator.getTranslate(originalWord));
-    }
 }

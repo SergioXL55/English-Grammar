@@ -2,7 +2,9 @@ package my.words.news.service;
 
 import my.words.news.RandomTitle;
 import my.words.news.handler.AbstractNewsHandler;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 /**
  * User: Sushakov
@@ -10,23 +12,32 @@ import org.springframework.context.annotation.Configuration;
  * Time: 12:52
  **/
 @Configuration("googleNews")
+@PropertySource("resources/googleNews.properties")
 public class GoogleNews extends AbstractNewsHandler implements RandomTitle {
 
-    private final static String JSON_ARRAY = "articles";
-    private final static String JSON_FIELD = "title";
-    private final static String API_KEY = "&apiKey=e25a8073d6d842b59c0d757c3a4736c0";
-    private final static String PARAM_FROM = "&from=" + getCurrentDate();
-    private final static String PARAM_SOURCE = "fox-news";
-    private final static String API_URL = "http://newsapi.org/v2/everything?sources=" + PARAM_SOURCE + PARAM_FROM + API_KEY;
+    @Value("${google.news.PARAM_SOURCE}")
+    private String paramSource;
+    @Value("${google.news.PARAM_FROM}")
+    private String paramFrom;
+    @Value("${google.news.API_KEY}")
+    private String apiKey;
+    @Value("${google.news.API_URL}")
+    private String apiUrl;
+    @Value("${google.news.JSON_ARRAY}")
+    private String jsonArray;
+    @Value("${google.news.JSON_FIELD}")
+    private String jsonField;
+
 
     @Override
     public String getTitle() {
-        return getField(JSON_ARRAY, JSON_FIELD);
+        String url=apiUrl+paramSource+paramFrom+getCurrentDate()+apiKey;
+        getJson(url);
+        return getField(jsonArray,jsonField);
     }
 
     public GoogleNews() {
-        getJson(API_URL);
-    }
 
+    }
 
 }
