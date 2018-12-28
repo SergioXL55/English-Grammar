@@ -3,6 +3,7 @@ package my.webConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -14,7 +15,13 @@ import org.springframework.web.servlet.view.JstlView;
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan("my")
+@ComponentScan(basePackages = "my")
+@PropertySource(value = {
+        "classpath:googleNews.properties",
+        "classpath:yandexTranslator.properties",
+        "classpath:encrypt.service.properties"},
+        encoding = "windows-1251",
+        ignoreResourceNotFound = true)
 public class WebConfig implements WebMvcConfigurer {
 
     @Bean

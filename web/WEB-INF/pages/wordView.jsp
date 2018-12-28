@@ -1,18 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <html>
 <head>
-    <script type="text/javascript">
-        <%@include file="/WEB-INF/js/checkWord.js" %>
-        <%@include file="/WEB-INF/js/refresh.js" %>
-        <%@include file="/WEB-INF/js/translator.js" %>
-    </script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <style>
-        <%@include file="/WEB-INF/css/word.css" %>
-    </style>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <%@include file="/WEB-INF/pages/header/include.jsp" %>
 </head>
 <body>
 <div id="title">
@@ -21,7 +11,7 @@
 <div id="mainForm">
     <c:forEach begin="0" end="${sentences.size()-1}" var="row">
         <c:forEach begin="0" end="${sentences.get(row).randomSentence.size()-1}" var="i">
-            <a href="#" onclick="clickMe(${row},${i})" onmouseenter="translateWord('link${row}word${i}')"
+            <a href="#" onclick="clickMe(${row},${i})" onmousemove="focus()" onmouseenter="translateWord('link${row}word${i}')"
                id="link${row}word${i}">${sentences.get(row).randomSentence.get(i)}</a>
         </c:forEach>
         <br>
