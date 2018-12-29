@@ -3,16 +3,14 @@ package my.words.news.service;
 import my.words.news.RandomTitle;
 import my.words.news.handler.AbstractNewsHandler;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Component;
 
 /**
  * User: Sushakov
  * Date: 12/14/2018
  * Time: 12:52
  **/
-@Configuration("googleNews")
-@PropertySource("resources/googleNews.properties")
+@Component("googleNews")
 public class GoogleNews extends AbstractNewsHandler implements RandomTitle {
 
     @Value("${google.news.PARAM_SOURCE}")
@@ -31,9 +29,9 @@ public class GoogleNews extends AbstractNewsHandler implements RandomTitle {
 
     @Override
     public String getTitle() {
-        String url=apiUrl+paramSource+paramFrom+getCurrentDate()+apiKey;
+        String url = apiUrl + paramSource + paramFrom + getCurrentDate() + apiKey;
         getJson(url);
-        return getField(jsonArray,jsonField);
+        return getField(jsonArray, jsonField);
     }
 
     public GoogleNews() {

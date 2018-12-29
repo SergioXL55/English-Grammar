@@ -8,7 +8,6 @@ function ref() {
                 alert('Person has been added'+data.copyright);
             }
             else alert('Failed adding person: ' + data.status + ', ' + data.errorMessage);
-
         }
     });
 }

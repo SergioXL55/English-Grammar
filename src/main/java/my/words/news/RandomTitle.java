@@ -7,5 +7,6 @@ package my.words.news;
  **/
 
 public interface RandomTitle {
+
     String getTitle();
 }

@@ -30,7 +30,7 @@ public class RandomWordController {
     }
 
     @RequestMapping("/word")
-    public ModelAndView loadRandomWord(@RequestParam Map<String, String> param, ModelMap modelMap) {
+    public ModelAndView loadRandomWord(ModelMap modelMap) {
         randomSentence.clearScentences();
         randomSentence.addSentencesFromWeb(SENTENCES_COUNT);
         modelMap.addAttribute("sentences", randomSentence.getAllSecntences());
@@ -39,7 +39,7 @@ public class RandomWordController {
 
     @RequestMapping(value = "/check", method = RequestMethod.POST)
     @ResponseBody
-    public Integer randomWord(@RequestParam Map<String, String> param, ModelMap modelMap) {
+    public Integer randomWord(@RequestParam Map<String, String> param) {
         int id = Integer.parseInt(param.getOrDefault("id", "0"));
         int num = Integer.parseInt(param.getOrDefault("num", "0"));
         return randomSentence.checkWord(id, num).getCode();
@@ -51,10 +51,4 @@ public class RandomWordController {
         return translator.getTranslate(param.getOrDefault("text", "error"));
     }
 
-
-    @RequestMapping(value = "/test", method = RequestMethod.POST)
-    @ResponseBody
-    public Integer test(@RequestParam Map<String, String> param) {
-        return randomSentence.checkWord(0, 0).getCode();
-    }
 }

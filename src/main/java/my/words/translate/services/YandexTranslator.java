@@ -4,7 +4,6 @@ import my.words.translate.Translator;
 import my.words.translate.handler.AbstractTranslateHandler;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 
 /**
  * User: Sushakov
@@ -12,7 +11,6 @@ import org.springframework.context.annotation.PropertySource;
  * Time: 10:05
  **/
 @Configuration
-@PropertySource(value = "resources/yandexTranslator.properties",encoding = "windows-1251")
 public class YandexTranslator extends AbstractTranslateHandler implements Translator {
 
     @Value("${ya.trans.JSON_ARRAY}")
@@ -30,8 +28,14 @@ public class YandexTranslator extends AbstractTranslateHandler implements Transl
 
     @Override
     public String getTranslate(String inputText) {
+        if (inputText == null || inputText.isEmpty()) return "error";
         String url = apiUrl + apiKey + paramLang + paramText;
         getJson(url + inputText);
         return "Перевод: " + getField(jsonArray) + yandexApi;
     }
+
+    public YandexTranslator() {
+
+    }
+
 }

@@ -9,37 +9,24 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <%@include file="/WEB-INF/pages/header/include.jsp" %>
     <title>Title</title>
 </head>
 <body>
-
-
-<div style="position: center" >
+<div id="mainDiv">
     <h1>${title}</h1>
     <br>
-    <form action="${pageContext.servletContext.contextPath}/${perfix}" method="post" onsubmit="return validate_form();" name="mainForm">
-        <p>
-        <h3>Введите текст:</h3></p>
-        <input type="text" name="text"/>
-        <button type="submit" value="Click">Закодировать</button>
-    </form>
-</div>
-<div>
+    <p>
+    <h3>Введите текст:</h3></p>
+    <input id="inputText" type="text" name="text" size="64" placeholder="введите текст"/>
+    <br>
+    <input type="button" value="Encode" onclick="encode()"/>
+    <input type="button" value="Decode" onclick="decode()"/>
     <p>
     <h3>Резльтат:</h3></p>
-    <p>${decode}</p>
+    <span id="outputText"></span>
 </div>
 </body>
 
-<script type="text/javascript">
-    function validate_form() {
-        valid = true;
-        if (document.mainForm.text.value == "") {
-            alert("Пожалуйста введите текст");
-            valid = false;
-        }
-        return valid;
-    }
-</script>
 
 </html>
