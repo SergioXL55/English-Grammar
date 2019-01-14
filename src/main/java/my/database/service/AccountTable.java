@@ -13,6 +13,7 @@ import java.util.List;
 public interface AccountTable {
 
     void insert(String name,String pass,boolean locked,int role);
-    Account get(int id);
+    Account get(int id) ;
+    boolean lock(int id) ;
     List<Account> getAll();
 }

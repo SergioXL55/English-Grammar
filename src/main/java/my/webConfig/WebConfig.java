@@ -17,13 +17,13 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableWebMvc
 @ComponentScan(basePackages = "my")
 @PropertySource(value = {
-        "classpath:googleNews.properties",
-        "classpath:yandexTranslator.properties",
-        "classpath:encrypt.service.properties",
-        "classpath:datasource.config.properties",
-        "classpath:hibernate.config.properties"},
+        "resources/googleNews.properties",
+        "resources/yandexTranslator.properties",
+        "resources/encrypt.service.properties",
+        "resources/datasource.config.properties",
+        "resources/hibernate.config.properties"},
         encoding = "windows-1251",
-        ignoreResourceNotFound = true)
+ignoreResourceNotFound = true)
 public class WebConfig implements WebMvcConfigurer {
 
     @Bean

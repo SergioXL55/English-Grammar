@@ -34,7 +34,6 @@ public class HibernateConfig {
     private String pass;
     @Value("${datasource.conf.driver}")
     private String driver;
-
     @Value("${hibernate.config.package}")
     private String entityPackage;
     @Value("${hibernate.property.dialect}")

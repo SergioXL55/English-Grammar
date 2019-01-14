@@ -8,6 +8,7 @@ import java.io.Serializable;
  * Date: 12/28/2018
  * Time: 15:53
  **/
+@SuppressWarnings("all")
 @Entity
 @Table(name = "account")
 public class Account implements Serializable {
@@ -72,5 +73,16 @@ public class Account implements Serializable {
 
     public void setRole(Integer role) {
         this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                ", pass='" + pass + '\'' +
+                ", locked=" + locked +
+                ", role=" + role +
+                '}';
     }
 }
