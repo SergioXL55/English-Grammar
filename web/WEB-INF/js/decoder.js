@@ -8,7 +8,7 @@ function encode() {
             }
         })
     }
-}
+};
 
 function decode() {
     if(notEmpty()) {
@@ -20,7 +20,7 @@ function decode() {
             }
         })
     }
-}
+};
 
 function notEmpty(){
     if(document.getElementById("inputText").value ==""){

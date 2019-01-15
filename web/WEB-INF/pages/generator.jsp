@@ -20,8 +20,8 @@
     <h3>Введите текст:</h3></p>
     <input id="inputText" type="text" name="text" size="64" placeholder="введите текст"/>
     <br>
-    <input type="button" value="Encode" onclick="encode()"/>
-    <input type="button" value="Decode" onclick="decode()"/>
+        <input type="button" value="Encode" onclick="encode()"/>
+        <input type="button" value="Decode" onclick="decode()"/>
     <p>
     <h3>Резльтат:</h3></p>
     <span id="outputText"></span>
