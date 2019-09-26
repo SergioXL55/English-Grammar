@@ -1,3 +1,3 @@
 # EnglishGrammar
-Service for learning english grammar.
+Web Service for learning english grammar.
 Used Yandex Translate Api.
