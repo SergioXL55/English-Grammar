@@ -8,7 +8,7 @@
     <artifactId>crypto</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
-        <spring.version>5.0.7.RELEASE</spring.version>
+        <spring.version>5.5.7</spring.version>
         <deploy.server>ip_server</deploy.server>
     </properties>
     <build>
